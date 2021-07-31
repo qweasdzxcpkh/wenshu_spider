@@ -32,9 +32,9 @@ def login():
     # print(resp_04.json())
 
     post_data = {
-        'username': '178********',  # 账号
+        'username': '159********',  # 账号
         # 需要去拦截post请求查看，没时间去查看加密过程。但是加密后的密码是可以重复使用的，与使用明文密码没有太大差别
-        'password': 'BVcEhT6dWmdXbIu1uil%2BCw9tDTGjPisdfgsrysFSDsdtbhyhh2F5%2FImIzOhskxevf0kDbYsN3SdfghDSgSDgGyKjWDGfhfgdsEtvxv%2FR1RdshjiEtOTcjnCXTctBN9klTGDa9WjR6X1JTDWLX7iu%2FCtOqLbZQKEv%2BoBEt6Xmk0FNuqllt0d3F4OLPhe8EilKf6YJsAOz2OQ9xcYsdQGaKbcF9r7Phof1B5OhV%2BmQJDU3c9W5dD352O5SW7WazvTPsiqJtmgSECCv354Kb3uRlX4p6B%2FnK0vLapRJ6z7ag',
+        'password': 'ZXJcdMH18JMFtwWsomPVLdBOHwWLrqUbrxi%2FPL%2B8LNDr0b7s2oXJoPPW0ZLqsCM4p61%2Bs6if3KJa6pHoCVuFmmWjQz82u5kukA0LWguslFOYW1a%2FvH56EwZlXqRZuGk3ZrhsdK5cWka6SjLJDR%2FPlR877YU6DJpQEvzGP9o0vEIxWcck6gPoi3SpewcF5abm183ZJaC1sQi0wrFXfH2PFdNktqzStl%2B9CwXphnTx34BxGH7Q%2BU6iVmfKBAvMS9QPyyX%2Fl8ya9JlsW9nUABwbNEEu7pdbeL0TgtmNYaGI3CRIqiniLicLr0XZ6n2cHRwU3NFvGhYdvYbyY7KBJHXHxw%3D%3D',
         'appDomain': 'wenshu.court.gov.cn',
     }
 

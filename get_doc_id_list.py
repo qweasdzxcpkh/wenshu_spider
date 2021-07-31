@@ -4,15 +4,15 @@ import execjs
 import time
 
 from DESUtils import TripleDesUtils
-from mongo_util import MyMongoDB
+# from mongo_util import MyMongoDB
 
-mongo = MyMongoDB()
+# mongo = MyMongoDB()
 
 with open("cipher.js") as f:
     js_text = f.read()
 
 d_time = time.strptime(time.ctime())
-v = str(d_time.tm_year) + str(d_time.tm_mon).zfill(2) + str(d_time.tm_mday)
+v = str(d_time.tm_year) + str(d_time.tm_mon).zfill(2) + str(d_time.tm_mday).zfill(2)
 
 
 def list_spider(page, cookie):
@@ -28,13 +28,11 @@ def list_spider(page, cookie):
     # 参数及过滤条件
     post_data = {
         'pageId': 'eff768e57e9ace92d6e7ab4c2976575b',
-        's8': '03',
         'sortFields': 's50:desc',
         'ciphertext': ciphertext,
         'pageNum': str(page),
         'pageSize': '15',
-        'queryCondition': '[{"key":"s2","value":"山东省高级人民法院"},{"key":"s8","value":"03"},\
-                            {"key":"cprqStart","value":"2021-03-01"},{"key":"cprqEnd","value":"2021-03-31"}]',
+        'queryCondition': '[{"key":"s21","value":"幼女"},{"key":"s21","value":"猥亵"},{"key":"s21","value":"强奸"}]',
         'cfg': 'com.lawyee.judge.dc.parse.dto.SearchDataDsoDTO@queryDoc',
         '__RequestVerificationToken': ss['salt']
     }

@@ -7,7 +7,7 @@ from DESUtils import TripleDesUtils
 from mongo_util import MyMongoDB
 
 d_time = time.strptime(time.ctime())
-v = str(d_time.tm_year) + str(d_time.tm_mon).zfill(2) + str(d_time.tm_mday)
+v = str(d_time.tm_year) + str(d_time.tm_mon).zfill(2) + str(d_time.tm_mday).zfill(2)
 
 with open("cipher.js") as f:
     js_text = f.read()
@@ -28,10 +28,10 @@ def cipher():
 
 
 def detail_spider(cookie, doc_id):
-    mongo = MyMongoDB()
-    if mongo.dbfind({"s5": doc_id}):
-        print("{}已存在mongo".format(doc_id))
-        return
+    # mongo = MyMongoDB()
+    # if mongo.dbfind({"s5": doc_id}):
+    #     print("{}已存在mongo".format(doc_id))
+    #     return
 
     print("正在获取详情doc_id:", doc_id)
     url = "https://wenshu.court.gov.cn/website/parse/rest.q4w"
@@ -65,4 +65,4 @@ def detail_spider(cookie, doc_id):
     res = DES3.decrypt(content, key, iv)
     print("结果:", res)
 
-    mongo.insert(eval(res))
+    # mongo.insert(eval(res))
