@@ -4,7 +4,7 @@ from pymongo import MongoClient
 settings = {
     "ip": '127.0.0.1',  # ip
     "port": 27017,  # 端口
-    "db_name": "wenshuwang_result",
+    "db_name": "wenshu_zhongshen",
 }
 
 
@@ -48,5 +48,9 @@ class MyMongoDB(object):
             if result["s5"]:
                 return True
         return False
+
+    def fetch(self, dic = None):
+        data = self.my_set.find(dic)
+        return data
 
 

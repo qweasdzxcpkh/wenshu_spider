@@ -1,7 +1,9 @@
+import re
 import json
 import requests
 import execjs
 import time
+from urllib.parse import unquote
 
 from DESUtils import TripleDesUtils
 from mongo_util import MyMongoDB
@@ -28,10 +30,10 @@ def cipher():
 
 
 def detail_spider(cookie, doc_id):
-    # mongo = MyMongoDB()
-    # if mongo.dbfind({"s5": doc_id}):
-    #     print("{}已存在mongo".format(doc_id))
-    #     return
+    mongo = MyMongoDB()
+    if mongo.dbfind({"s5": doc_id}):
+        print("{}已存在mongo".format(doc_id))
+        return
 
     print("正在获取详情doc_id:", doc_id)
     url = "https://wenshu.court.gov.cn/website/parse/rest.q4w"
@@ -65,4 +67,8 @@ def detail_spider(cookie, doc_id):
     res = DES3.decrypt(content, key, iv)
     print("结果:", res)
 
-    # mongo.insert(eval(res))
+    mongo.insert(eval(res))
+
+    r = requests.get(f'https://wenshu.court.gov.cn/down/one?docId={doc_id}', headers=headers, cookies=cookie)
+    fname, suffix = re.findall("filename=(.+)", r.headers['content-disposition'])[0].split('.')
+    open(f'./storage/{unquote( fname )}-{doc_id}.{suffix}', 'wb').write(r.content)

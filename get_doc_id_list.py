@@ -15,7 +15,7 @@ d_time = time.strptime(time.ctime())
 v = str(d_time.tm_year) + str(d_time.tm_mon).zfill(2) + str(d_time.tm_mday).zfill(2)
 
 
-def list_spider(page, cookie):
+def list_spider(page, cookie, query, sort: str):
     DES3 = TripleDesUtils()
     js_var = execjs.compile(js_text)
     ss = js_var.call('cipher')
@@ -28,11 +28,11 @@ def list_spider(page, cookie):
     # 参数及过滤条件
     post_data = {
         'pageId': 'eff768e57e9ace92d6e7ab4c2976575b',
-        'sortFields': 's50:desc',
+        'sortFields': sort,
         'ciphertext': ciphertext,
         'pageNum': str(page),
         'pageSize': '15',
-        'queryCondition': '[{"key":"s21","value":"幼女"},{"key":"s21","value":"猥亵"},{"key":"s21","value":"强奸"}]',
+        'queryCondition': json.dumps(query),
         'cfg': 'com.lawyee.judge.dc.parse.dto.SearchDataDsoDTO@queryDoc',
         '__RequestVerificationToken': ss['salt']
     }
